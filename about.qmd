@@ -1,0 +1,26 @@
+---
+title: "About the Project"
+subtitle: "Understanding the physics, mechanics, and data behind modern home runs"
+---
+
+::: {.lead}
+This project explores the physics and mechanics behind Major League Baseball home runs using Statcast tracking data from the 2025 season.
+:::
+
+## What Makes a Home Run Go Out of the Park?
+
+Sending a baseball over an outfield wall 350 to 420+ feet away requires the right combination of physics and timing:
+
+1. **Exit Velocity (Bat Speed & Contact)**: The ball needs sufficient speed coming off the bat. Most home runs require an exit velocity of at least 95–100+ mph to overcome aerodynamic drag and carry the fence.
+2. **Launch Angle (Lift)**: Crushing the ball is not enough if it is driven into the ground or popped straight up. The ideal trajectory is between **25° and 35°**, which provides the perfect blend of carry and distance.
+3. **The Sweet Spot ("Barrels")**: Statcast defines a "barrel" as a batted ball hit with the combination of exit velocity and launch angle that yields the highest likelihood of extra-base hits and home runs.
+
+By studying these tracking metrics, we can see exactly what separates a routine flyout from a tape-measure blast.
+
+::: {.callout-tip appearance="simple" icon=false}
+### Data Source & Methodology
+
+- **Data Source**: MLB Statcast tracking data via [Baseball Savant](https://baseballsavant.mlb.com/).
+- **Scope**: All regular and postseason home runs recorded during the 2025 MLB season.
+- **Tools**: Built using R, Quarto, the `tidyverse`, and `plotly`.
+:::

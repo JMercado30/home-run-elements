@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About the Project",
+    "section": "",
+    "text": "This project explores the physics and mechanics behind Major League Baseball home runs using Statcast tracking data from the 2025 season."
+  },
+  {
+    "objectID": "about.html#what-makes-a-home-run-go-out-of-the-park",
+    "href": "about.html#what-makes-a-home-run-go-out-of-the-park",
+    "title": "About the Project",
+    "section": "What Makes a Home Run Go Out of the Park?",
+    "text": "What Makes a Home Run Go Out of the Park?\nSending a baseball over an outfield wall 350 to 420+ feet away requires the right combination of physics and timing:\n\nExit Velocity (Bat Speed & Contact): The ball needs sufficient speed coming off the bat. Most home runs require an exit velocity of at least 95–100+ mph to overcome aerodynamic drag and carry the fence.\nLaunch Angle (Lift): Crushing the ball is not enough if it is driven into the ground or popped straight up. The ideal trajectory is between 25° and 35°, which provides the perfect blend of carry and distance.\nThe Sweet Spot (“Barrels”): Statcast defines a “barrel” as a batted ball hit with the combination of exit velocity and launch angle that yields the highest likelihood of extra-base hits and home runs.\n\nBy studying these tracking metrics, we can see exactly what separates a routine flyout from a tape-measure blast.\n\n\n\n\n\n\nTipData Source & Methodology\n\n\n\n\nData Source: MLB Statcast tracking data via Baseball Savant.\nScope: All regular and postseason home runs recorded during the 2025 MLB season.\nTools: Built using R, Quarto, the tidyverse, and plotly."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Elements of a Home Run",
+    "section": "",
+    "text": "What does it take to hit a home run in Major League Baseball? Using Statcast tracking data from the 2025 season, this interactive visualization examines how exit velocity and launch angle combine to send the ball over the fence.\n\nHitting a home run requires a precise combination of swing mechanics and launch characteristics. Mechanically, a hitter generates explosive rotational power from the lower body through the hips and torso, delivering high bat speed along a slightly upward swing plane to make square contact on the lower half of the baseball. This collision creates the signature characteristics of a home run: an exit velocity typically topping 100 mph, a launch angle elevated into the 25°–35° window, and backspin that generates aerodynamic lift to carry the ball beyond outfield fences 380+ feet away.\n\n\n\n\n\n\n\n\n\n\n\n\nNoteKey Insights from the Data\n\n\n\n\nExit Velocity (x-axis): The speed at which the ball leaves the bat in miles per hour. Most home runs require at least 95 mph, with the median hovering around 105 mph.\nLaunch Angle (y-axis): The vertical angle of the hit in degrees. The optimal trajectory for a home run falls between 25° and 35°.\nHit Distance (Color): Lighter yellow and orange tones represent tape-measure blasts (400+ ft), while darker purple points mark shorter hits that just cleared the fence.\nThe “Sweet Spot”: Notice how the density of dots clusters heavily between 100–110 mph and 25°–35°. This combination produces the highest likelihood of a home run in Major League Baseball."
+  }
+]

@@ -1,0 +1,68 @@
+---
+title: "Elements of a Home Run"
+subtitle: "Analyzing launch profiles and the physics of home runs using 2025 MLB Statcast data"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+::: {.lead}
+What does it take to hit a home run in Major League Baseball? Using Statcast tracking data from the 2025 season, this interactive visualization examines how **exit velocity** and **launch angle** combine to send the ball over the fence.
+:::
+
+Hitting a home run requires a precise combination of swing mechanics and launch characteristics. Mechanically, a hitter generates explosive rotational power from the lower body through the hips and torso, delivering high bat speed along a slightly upward swing plane to make square contact on the lower half of the baseball. This collision creates the signature characteristics of a home run: an exit velocity typically topping 100 mph, a launch angle elevated into the 25°–35° window, and backspin that generates aerodynamic lift to carry the ball beyond outfield fences 380+ feet away.
+
+```{r}
+#| fig-width: 10
+#| fig-height: 7.5
+
+library(tidyverse)
+library(plotly)
+
+# Load Statcast data and format hover information for each home run
+home_runs <- read_csv("data/home_runs_2025.csv") |>
+  filter(!is.na(launch_speed), !is.na(launch_angle)) |>
+  mutate(
+    dist_label = if_else(is.na(hit_distance_sc), "N/A", paste0(hit_distance_sc, " ft")),
+    hover_text = paste0(
+      "<b>", player_name, "</b><br>",
+      "Date: ", game_date, "<br>",
+      "Matchup: ", away_team, " @ ", home_team, "<br>",
+      "Exit Velocity: ", launch_speed, " mph<br>",
+      "Launch Angle: ", launch_angle, "°<br>",
+      "Distance: ", dist_label, "<br>",
+      "Pitch: ", coalesce(pitch_name, "Unknown")
+    )
+  )
+
+# Build plot with hover text on every point
+p <- ggplot(home_runs, aes(x = launch_speed, y = launch_angle, color = hit_distance_sc, text = hover_text)) +
+  geom_jitter(alpha = 0.45, size = 0.9, width = 0.4, height = 0.5) +
+  scale_color_viridis_c(option = "plasma", name = "Distance (ft)", na.value = "gray70") +
+  scale_x_continuous(breaks = seq(85, 125, by = 5)) +
+  scale_y_continuous(breaks = seq(15, 50, by = 5)) +
+  labs(
+    title = "Where Home Runs Happen: Exit Velocity vs. Launch Angle (2025)",
+    subtitle = "Most home runs cluster between 100–110 mph exit velocity and 25°–35° launch angle",
+    x = "Exit Velocity (mph)",
+    y = "Launch Angle (degrees)"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank()
+  )
+
+# Convert ggplot to interactive plotly widget with expanded height
+ggplotly(p, tooltip = "text", height = 650)
+```
+
+::: {.callout-note appearance="simple" icon=false}
+### Key Insights from the Data
+
+- **Exit Velocity (x-axis)**: The speed at which the ball leaves the bat in miles per hour. Most home runs require at least 95 mph, with the median hovering around 105 mph.
+- **Launch Angle (y-axis)**: The vertical angle of the hit in degrees. The optimal trajectory for a home run falls between 25° and 35°.
+- **Hit Distance (Color)**: Lighter yellow and orange tones represent tape-measure blasts (400+ ft), while darker purple points mark shorter hits that just cleared the fence.
+- **The "Sweet Spot"**: Notice how the density of dots clusters heavily between **100–110 mph** and **25°–35°**. This combination produces the highest likelihood of a home run in Major League Baseball.
+:::
