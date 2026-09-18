@@ -1,0 +1,17 @@
+---
+title: "Simulator"
+subtitle: "Simulating home runs across different MLB ballparks"
+---
+
+::: {.lead}
+Explore how exit velocity, launch angle, and ballpark dimensions interact to determine whether a batted ball is a home run.
+:::
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+
+# Load ballpark dimensions
+ballparks <- read_csv("data/ballpark_dimensions.csv")
+```

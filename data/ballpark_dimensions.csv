@@ -1,0 +1,31 @@
+team,venue,city,state,left_line,left_center,center,right_center,right_line,roof_type,turf_type,capacity
+Arizona Diamondbacks,Chase Field,Phoenix,AZ,328,412,407,414,335,Retractable,Artificial Turf,48405
+Athletics,Sutter Health Park,Sacramento,CA,330,380,403,380,325,Open,Grass,13416
+Atlanta Braves,Truist Park,Atlanta,GA,335,385,400,375,325,Open,Grass,40819
+Baltimore Orioles,Oriole Park at Camden Yards,Baltimore,MD,333,376,410,373,318,Open,Grass,42455
+Boston Red Sox,Fenway Park,Boston,MA,310,390,420,380,302,Open,Grass,37755
+Chicago Cubs,Wrigley Field,Chicago,IL,355,368,400,368,353,Open,Grass,41298
+Chicago White Sox,Rate Field,Chicago,IL,330,377,400,372,335,Open,Grass,40126
+Cincinnati Reds,Great American Ball Park,Cincinnati,OH,328,379,404,370,325,Open,Grass,42319
+Cleveland Guardians,Progressive Field,Cleveland,OH,325,410,405,375,325,Open,Grass,34830
+Colorado Rockies,Coors Field,Denver,CO,347,420,415,424,350,Open,Grass,50480
+Detroit Tigers,Comerica Park,Detroit,MI,345,370,420,365,330,Open,Grass,41083
+Houston Astros,Daikin Park,Houston,TX,315,362,409,373,326,Retractable,Grass,41168
+Kansas City Royals,Kauffman Stadium,Kansas City,MO,347,379,410,379,344,Open,Grass,38179
+Los Angeles Angels,Angel Stadium,Anaheim,CA,330,389,396,365,330,Open,Grass,45517
+Los Angeles Dodgers,UNIQLO Field at Dodger Stadium,Los Angeles,CA,330,385,395,385,330,Open,Grass,56000
+Miami Marlins,loanDepot park,Miami,FL,344,386,407,392,335,Retractable,Artificial Turf,37446
+Milwaukee Brewers,American Family Field,Milwaukee,WI,344,371,400,374,345,Retractable,Grass,40100
+Minnesota Twins,Target Field,Minneapolis,MN,339,377,404,367,328,Open,Grass,38544
+New York Mets,Citi Field,Flushing,NY,335,370,408,380,330,Open,Grass,41922
+New York Yankees,Yankee Stadium,Bronx,NY,318,399,408,385,314,Open,Grass,46537
+Philadelphia Phillies,Citizens Bank Park,Philadelphia,PA,329,381,401,398,330,Open,Grass,42901
+Pittsburgh Pirates,PNC Park,Pittsburgh,PA,325,410,399,375,320,Open,Grass,38705
+San Diego Padres,Petco Park,San Diego,CA,336,386,396,391,322,Open,Grass,40000
+San Francisco Giants,Oracle Park,San Francisco,CA,339,399,391,415,309,Open,Grass,41311
+Seattle Mariners,T-Mobile Park,Seattle,WA,331,390,405,387,327,Retractable,Grass,47378
+St. Louis Cardinals,Busch Stadium,St. Louis,MO,336,375,400,375,335,Open,Grass,43435
+Tampa Bay Rays,Tropicana Field,St. Petersburg,FL,315,410,404,404,322,Dome,Artificial Turf,25025
+Texas Rangers,Globe Life Field,Arlington,TX,329,372,407,374,326,Retractable,Artificial Turf,40518
+Toronto Blue Jays,Rogers Centre,Toronto,ON,328,375,404,375,328,Retractable,Artificial Turf,39150
+Washington Nationals,Nationals Park,Washington,DC,336,377,402,370,335,Open,Grass,41376
