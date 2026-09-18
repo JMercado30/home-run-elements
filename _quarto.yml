@@ -8,6 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: simulator.qmd
+        text: Simulator
       - href: about.qmd
         text: About
   page-footer:

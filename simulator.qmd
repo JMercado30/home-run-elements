@@ -1,17 +1,297 @@
 ---
 title: "Simulator"
-subtitle: "Simulating home runs across different MLB ballparks"
+subtitle: "Would that home run clear the fence in another ballpark?"
+format:
+  html:
+    toc: true
 ---
 
 ::: {.lead}
-Explore how exit velocity, launch angle, and ballpark dimensions interact to determine whether a batted ball is a home run.
+Select an MLB team, pick a home run hit by a player on that team, and choose any stadium to see the true physical outline of the ballpark and test if the ball clears the fence.
 :::
 
 ```{r}
+#| echo: false
 #| message: false
 #| warning: false
+
 library(tidyverse)
 
-# Load ballpark dimensions
-ballparks <- read_csv("data/ballpark_dimensions.csv")
+# Map Statcast team abbreviations to franchise names
+team_map <- c(
+  "AZ" = "Arizona Diamondbacks", "ATH" = "Athletics", "ATL" = "Atlanta Braves",
+  "BAL" = "Baltimore Orioles", "BOS" = "Boston Red Sox", "CHC" = "Chicago Cubs",
+  "CWS" = "Chicago White Sox", "CIN" = "Cincinnati Reds", "CLE" = "Cleveland Guardians",
+  "COL" = "Colorado Rockies", "DET" = "Detroit Tigers", "HOU" = "Houston Astros",
+  "KC" = "Kansas City Royals", "LAA" = "Los Angeles Angels", "LAD" = "Los Angeles Dodgers",
+  "MIA" = "Miami Marlins", "MIL" = "Milwaukee Brewers", "MIN" = "Minnesota Twins",
+  "NYM" = "New York Mets", "NYY" = "New York Yankees", "PHI" = "Philadelphia Phillies",
+  "PIT" = "Pittsburgh Pirates", "SD" = "San Diego Padres", "SF" = "San Francisco Giants",
+  "SEA" = "Seattle Mariners", "STL" = "St. Louis Cardinals", "TB" = "Tampa Bay Rays",
+  "TEX" = "Texas Rangers", "TOR" = "Toronto Blue Jays", "WSH" = "Washington Nationals"
+)
+
+# Load Statcast home runs
+home_runs_raw <- read_csv("data/home_runs_2025.csv", show_col_types = FALSE)
+
+hr_sim <- home_runs_raw |>
+  mutate(
+    batter_abbr = if_else(inning_topbot == "Top", away_team, home_team),
+    opponent_abbr = if_else(inning_topbot == "Top", home_team, away_team),
+    team = team_map[batter_abbr]
+  ) |>
+  filter(!is.na(team), !is.na(hit_distance_sc), !is.na(hc_x), !is.na(hc_y), !is.na(launch_speed)) |>
+  mutate(
+    # Spray angle in degrees: negative = left field, positive = right field, 0 = center
+    spray_angle = round(atan((hc_x - 125.42) / (198.27 - hc_y)) * (180 / pi) * 0.75, 1),
+    formatted_date = format(game_date, "%b %d"),
+    label = paste0(player_name, " — ", hit_distance_sc, " ft (", formatted_date, " vs ", opponent_abbr, ")")
+  ) |>
+  select(
+    team,
+    player_name,
+    formatted_date,
+    opponent = opponent_abbr,
+    hit_distance_sc,
+    launch_speed,
+    launch_angle,
+    spray_angle,
+    label
+  ) |>
+  arrange(team, player_name, desc(hit_distance_sc))
+
+# Load ballpark dimensions and real stadium wall path geometry
+ballparks <- read_csv("data/ballpark_dimensions.csv", show_col_types = FALSE)
+wall_paths <- read_csv("data/ballpark_wall_paths.csv", show_col_types = FALSE)
+
+parks_combined <- ballparks |>
+  left_join(
+    wall_paths |> select(team, wall_svg_d, field_svg_d, lf_x, lf_y, rf_x, rf_y, wall_json),
+    by = "team"
+  ) |>
+  arrange(team)
+
+# Pass clean data frames to Observable JS
+ojs_define(hr_data = hr_sim, parks_data = parks_combined)
+```
+
+```{ojs}
+//| echo: false
+
+// Convert tabular columns into row objects
+all_hrs = transpose(hr_data)
+all_parks = transpose(parks_data)
+
+unique_teams = Array.from(new Set(all_hrs.map(d => d.team))).sort()
+
+// 1. Pick a Team
+viewof selected_team = Inputs.select(
+  unique_teams,
+  {
+    label: html`<strong>1. Pick a Team:</strong>`,
+    value: "New York Yankees"
+  }
+)
+
+// Filter home runs to the selected team
+team_hrs = all_hrs.filter(d => d.team === selected_team)
+
+// 2. Pick a Home Run from that team
+viewof selected_hr = Inputs.select(
+  team_hrs,
+  {
+    label: html`<strong>2. Pick a Home Run:</strong>`,
+    format: d => d.label
+  }
+)
+
+// 3. Pick a Target Stadium
+viewof selected_park = Inputs.select(
+  all_parks,
+  {
+    label: html`<strong>3. Pick a Target Stadium:</strong>`,
+    value: all_parks.find(p => p.venue === "Fenway Park") || all_parks[0],
+    format: d => `${d.venue} (${d.team})`
+  }
+)
+```
+
+```{ojs}
+//| echo: false
+
+// Parse the true outfield fence coordinates for the selected stadium
+wall_pts = selected_park && selected_park.wall_json ? JSON.parse(selected_park.wall_json) : []
+
+// Calculate exact fence distance at the batted ball's spray angle using the true wall shape
+interpolated_fence = {
+  if (!selected_hr || !wall_pts.length) return 400;
+  const theta = selected_hr.spray_angle;
+  
+  if (theta <= wall_pts[0].angle) return wall_pts[0].dist;
+  if (theta >= wall_pts[wall_pts.length - 1].angle) return wall_pts[wall_pts.length - 1].dist;
+  
+  for (let i = 0; i < wall_pts.length - 1; i++) {
+    if (theta >= wall_pts[i].angle && theta <= wall_pts[i + 1].angle) {
+      const span = wall_pts[i + 1].angle - wall_pts[i].angle;
+      if (span === 0) return wall_pts[i].dist;
+      const t = (theta - wall_pts[i].angle) / span;
+      return wall_pts[i].dist + t * (wall_pts[i + 1].dist - wall_pts[i].dist);
+    }
+  }
+  return 400;
+}
+
+margin = selected_hr ? Math.round(selected_hr.hit_distance_sc - interpolated_fence) : 0
+is_homerun = margin >= 0
+```
+
+```{ojs}
+//| echo: false
+
+// Outcome Banner and Metrics Cards
+html`
+<div style="margin-top: 1rem; margin-bottom: 1.5rem;">
+  <div style="
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: ${is_homerun ? '#155724' : '#721c24'};
+    background-color: ${is_homerun ? '#d4edda' : '#f8d7da'};
+    border: 1px solid ${is_homerun ? '#c3e6cb' : '#f5c6cb'};
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  ">
+    <span style="font-size: 1.6rem;">${is_homerun ? '⚾' : '❌'}</span>
+    <div>
+      <div>${is_homerun ? 'HOME RUN!' : 'NOT A HOME RUN (OUT / OFF THE WALL)'}</div>
+      <div style="font-size: 0.95rem; font-weight: normal; margin-top: 0.2rem;">
+        ${is_homerun 
+          ? `Cleared the fence at <b>${selected_park.venue}</b> by <b>+${margin} ft</b>.` 
+          : `Fell short of the fence at <b>${selected_park.venue}</b> by <b>${Math.abs(margin)} ft</b>.`}
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
+    <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 0.75rem 1rem;">
+      <div style="color: #6c757d; font-size: 0.8rem; text-transform: uppercase;">Hit Distance</div>
+      <div style="font-size: 1.3rem; font-weight: bold; color: #212529;">${selected_hr ? selected_hr.hit_distance_sc : '--'} ft</div>
+    </div>
+    <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 0.75rem 1rem;">
+      <div style="color: #6c757d; font-size: 0.8rem; text-transform: uppercase;">Wall Distance at Angle</div>
+      <div style="font-size: 1.3rem; font-weight: bold; color: #212529;">${Math.round(interpolated_fence)} ft</div>
+    </div>
+    <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 0.75rem 1rem;">
+      <div style="color: #6c757d; font-size: 0.8rem; text-transform: uppercase;">Exit Velocity</div>
+      <div style="font-size: 1.3rem; font-weight: bold; color: #212529;">${selected_hr ? selected_hr.launch_speed : '--'} mph</div>
+    </div>
+    <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 0.75rem 1rem;">
+      <div style="color: #6c757d; font-size: 0.8rem; text-transform: uppercase;">Launch Angle</div>
+      <div style="font-size: 1.3rem; font-weight: bold; color: #212529;">${selected_hr ? selected_hr.launch_angle : '--'}°</div>
+    </div>
+  </div>
+</div>
+`
+```
+
+```{ojs}
+//| echo: false
+
+// Dynamic SVG Ballpark Visualization showing actual stadium wall outline
+viewof field_svg = {
+  const width = 550;
+  const height = 500;
+  const cx = 275;
+  const cy = 460;
+  const scale = 0.9; // pixels per foot
+
+  if (!selected_hr || !selected_park) return html`<div>Loading simulator...</div>`;
+
+  // Batted ball landing location in SVG coordinates
+  const rad = selected_hr.spray_angle * (Math.PI / 180);
+  const ball_x = cx + scale * (selected_hr.hit_distance_sc * Math.sin(rad));
+  const ball_y = cy - scale * (selected_hr.hit_distance_sc * Math.cos(rad));
+
+  // Infield bases (90 ft diamond scaled)
+  const d90 = 90 * Math.SQRT1_2 * scale;
+  const p1B = { x: cx + d90, y: cy - d90 };
+  const p2B = { x: cx, y: cy - 90 * Math.SQRT2 * scale };
+  const p3B = { x: cx - d90, y: cy - d90 };
+  const pMound = { x: cx, y: cy - 60.5 * scale };
+
+  return html`
+  <div style="display: flex; justify-content: center; margin-top: 1rem;">
+    <svg width="${width}" height="${height}" style="background: #1e3a1e; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.25);">
+      <defs>
+        <!-- Infield dirt gradient -->
+        <radialGradient id="dirtGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#c68a4c" />
+          <stop offset="100%" stop-color="#9a5e27" />
+        </radialGradient>
+      </defs>
+
+      <!-- Actual Fair Territory for this Stadium -->
+      <path d="${selected_park.field_svg_d}" fill="#2e6336" />
+
+      <!-- Left and Right Foul Lines to Poles -->
+      <line x1="${cx}" y1="${cy}" x2="${selected_park.lf_x}" y2="${selected_park.lf_y}" 
+            stroke="#ffffff" stroke-width="2" stroke-opacity="0.8" />
+      <line x1="${cx}" y1="${cy}" x2="${selected_park.rf_x}" y2="${selected_park.rf_y}" 
+            stroke="#ffffff" stroke-width="2" stroke-opacity="0.8" />
+
+      <!-- Infield Dirt Diamond & Pitcher's Mound -->
+      <path d="M ${cx} ${cy} L ${p3B.x} ${p3B.y} L ${p2B.x} ${p2B.y} L ${p1B.x} ${p1B.y} Z" fill="url(#dirtGrad)" opacity="0.9" />
+      <circle cx="${cx}" cy="${cy}" r="14" fill="url(#dirtGrad)" />
+      <circle cx="${pMound.x}" cy="${pMound.y}" r="10" fill="url(#dirtGrad)" />
+
+      <!-- Base Paths -->
+      <line x1="${cx}" y1="${cy}" x2="${p1B.x}" y2="${p1B.y}" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3,3" />
+      <line x1="${p1B.x}" y1="${p1B.y}" x2="${p2B.x}" y2="${p2B.y}" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3,3" />
+      <line x1="${p2B.x}" y1="${p2B.y}" x2="${p3B.x}" y2="${p3B.y}" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3,3" />
+      <line x1="${p3B.x}" y1="${p3B.y}" x2="${cx}" y2="${cy}" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3,3" />
+
+      <!-- Bases -->
+      <rect x="${p1B.x - 3}" y="${p1B.y - 3}" width="6" height="6" fill="#ffffff" transform="rotate(45 ${p1B.x} ${p1B.y})" />
+      <rect x="${p2B.x - 3}" y="${p2B.y - 3}" width="6" height="6" fill="#ffffff" transform="rotate(45 ${p2B.x} ${p2B.y})" />
+      <rect x="${p3B.x - 3}" y="${p3B.y - 3}" width="6" height="6" fill="#ffffff" transform="rotate(45 ${p3B.x} ${p3B.y})" />
+      <polygon points="${cx},${cy} ${cx-3},${cy-3} ${cx-3},${cy-6} ${cx+3},${cy-6} ${cx+3},${cy-3}" fill="#ffffff" />
+
+      <!-- True Physical Outfield Wall of this Specific Stadium -->
+      <path d="${selected_park.wall_svg_d}" 
+            fill="none" stroke="#f1c40f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+
+      <!-- Foul Pole Markers -->
+      <circle cx="${selected_park.lf_x}" cy="${selected_park.lf_y}" r="4" fill="#f1c40f" stroke="#000" stroke-width="1" />
+      <circle cx="${selected_park.rf_x}" cy="${selected_park.rf_y}" r="4" fill="#f1c40f" stroke="#000" stroke-width="1" />
+      <text x="${selected_park.lf_x - 6}" y="${selected_park.lf_y - 6}" fill="#f1c40f" font-size="11" font-weight="bold" text-anchor="end">${selected_park.left_line}′</text>
+      <text x="${selected_park.rf_x + 6}" y="${selected_park.rf_y - 6}" fill="#f1c40f" font-size="11" font-weight="bold" text-anchor="start">${selected_park.right_line}′</text>
+      <text x="${cx}" y="78" fill="#f1c40f" font-size="11" font-weight="bold" text-anchor="middle">CF ${selected_park.center}′</text>
+
+      <!-- Ball Flight Path -->
+      <line x1="${cx}" y1="${cy}" x2="${ball_x}" y2="${ball_y}" 
+            stroke="${is_homerun ? '#2ecc71' : '#e74c3c'}" stroke-width="2.5" stroke-dasharray="5,4" />
+
+      <!-- Ball Landing Spot -->
+      <circle cx="${ball_x}" cy="${ball_y}" r="7" 
+              fill="${is_homerun ? '#2ecc71' : '#e74c3c'}" stroke="#ffffff" stroke-width="2" />
+      <circle cx="${ball_x}" cy="${ball_y}" r="12" 
+              fill="none" stroke="${is_homerun ? '#2ecc71' : '#e74c3c'}" stroke-width="1.5" opacity="0.6" />
+
+      <!-- Ball Landing Label -->
+      <text x="${ball_x}" y="${ball_y - 14}" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle"
+            filter="drop-shadow(0px 1px 3px rgba(0,0,0,0.9))">
+        ${selected_hr.hit_distance_sc} ft
+      </text>
+
+      <!-- Ballpark Title & Metadata Badge -->
+      <rect x="12" y="12" width="220" height="48" rx="6" fill="rgba(0,0,0,0.5)" />
+      <text x="20" y="32" fill="#ffffff" font-size="13" font-weight="bold">${selected_park.venue}</text>
+      <text x="20" y="48" fill="#d0d0d0" font-size="11">${selected_park.team} • ${selected_park.city}, ${selected_park.state}</text>
+    </svg>
+  </div>
+  `;
+}
 ```
