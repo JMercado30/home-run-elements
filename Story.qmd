@@ -1,9 +1,7 @@
 ---
-title: "Story"
+title: "Why Exit Velocity and Launch Angle Don’t Tell the Whole Story"
 format: html
 ---
-
-# Why Exit Velocity and Launch Angle Don’t Tell the Whole Story
 
 Two baseballs do not have to have the same exit velocity and launch angle to both be home runs. Exit velocity measures how fast the ball leaves the bat, while launch angle measures the vertical angle at which the ball is hit. These two factors work together, but there is not one specific combination that guarantees a home run. For example, one ball might leave the bat at 105 mph with a 25-degree launch angle, while another might leave at 95 mph with a 30-degree launch angle. Depending on other factors, such as where the ball is hit and the conditions of the stadium, both could still result in home runs.
 
