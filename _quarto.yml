@@ -10,6 +10,8 @@ website:
         text: Home
       - href: simulator.qmd
         text: Simulator
+      - href: Story.qmd
+        text: Story
       - href: about.qmd
         text: About
   page-footer:
