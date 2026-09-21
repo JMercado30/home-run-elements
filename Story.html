@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About the Project – Elements of a Home Run</title>
+<title>Story – Elements of a Home Run</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -104,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Simulator</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -123,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-makes-a-home-run-go-out-of-the-park" id="toc-what-makes-a-home-run-go-out-of-the-park" class="nav-link active" data-scroll-target="#what-makes-a-home-run-go-out-of-the-park">What Makes a Home Run Go Out of the Park?</a></li>
+  <li><a href="#story" id="toc-story" class="nav-link active" data-scroll-target="#story">Story</a></li>
   </ul>
 </nav>
     </div>
@@ -132,8 +132,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About the Project</h1>
-<p class="subtitle lead">Understanding the physics, mechanics, and data behind modern home runs</p>
+<h1 class="title">Story</h1>
 </div>
 
 
@@ -150,35 +149,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="lead">
-<p>This project explores the physics and mechanics behind Major League Baseball home runs using Statcast tracking data from the 2025 season.</p>
-</div>
-<section id="what-makes-a-home-run-go-out-of-the-park" class="level2">
-<h2 class="anchored" data-anchor-id="what-makes-a-home-run-go-out-of-the-park">What Makes a Home Run Go Out of the Park?</h2>
-<p>Sending a baseball over an outfield wall 350 to 420+ feet away requires the right combination of physics and timing:</p>
-<ol type="1">
-<li><strong>Exit Velocity (Bat Speed &amp; Contact)</strong>: The ball needs sufficient speed coming off the bat. Most home runs require an exit velocity of at least 95–100+ mph to overcome aerodynamic drag and carry the fence.</li>
-<li><strong>Launch Angle (Lift)</strong>: Crushing the ball is not enough if it is driven into the ground or popped straight up. The ideal trajectory is between <strong>25° and 35°</strong>, which provides the perfect blend of carry and distance.</li>
-<li><strong>The Sweet Spot (“Barrels”)</strong>: Statcast defines a “barrel” as a batted ball hit with the combination of exit velocity and launch angle that yields the highest likelihood of extra-base hits and home runs.</li>
-</ol>
-<p>By studying these tracking metrics, we can see exactly what separates a routine flyout from a tape-measure blast.</p>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Data Source &amp; Methodology
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>Data Source</strong>: MLB Statcast tracking data via <a href="https://baseballsavant.mlb.com/">Baseball Savant</a>.</li>
-<li><strong>Scope</strong>: All regular and postseason home runs recorded during the 2025 MLB season.</li>
-<li><strong>Tools</strong>: Built using R, Quarto, the <code>tidyverse</code>, and <code>plotly</code>.</li>
-</ul>
-</div>
-</div>
+<section id="story" class="level1">
+<h1>Story</h1>
+<p>Two baseballs do not have to have the same exit velocity and launch angle to both be home runs. Exit velocity measures how fast the ball leaves the bat, while launch angle measures the vertical angle at which the ball is hit. These two factors work together, but there is not one specific combination that guarantees a home run. For example, one ball might leave the bat at 105 mph with a 25-degree launch angle, while another might leave at 95 mph with a 30-degree launch angle. Depending on other factors, such as where the ball is hit and the conditions of the stadium, both could still result in home runs.</p>
+<p>This is important because every batted ball follows a different trajectory, and baseball stadiums have different field dimensions. A ball hit at a certain exit velocity and launch angle might travel over the fence in one ballpark but stay in play in another. Factors such as wind, temperature, altitude, and the distance to the outfield wall can also affect the result. Because of this, looking at exit velocity and launch angle together can help explain why some balls become home runs, but they cannot completely determine the outcome by themselves.</p>
 
 
 </section>
