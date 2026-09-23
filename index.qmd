@@ -14,8 +14,9 @@ What does it take to hit a home run in Major League Baseball? Using Statcast tra
 Hitting a home run requires a precise combination of swing mechanics and launch characteristics. Mechanically, a hitter generates explosive rotational power from the lower body through the hips and torso, delivering high bat speed along a slightly upward swing plane to make square contact on the lower half of the baseball. This collision creates the signature characteristics of a home run: an exit velocity typically topping 100 mph, a launch angle elevated into the 25°–35° window, and backspin that generates aerodynamic lift to carry the ball beyond outfield fences 380+ feet away.
 
 ```{r}
-#| fig-width: 10
-#| fig-height: 7.5
+#| fig-width: 8
+#| fig-height: 5
+#| out-width: "100%"
 
 library(tidyverse)
 library(plotly)
@@ -54,8 +55,10 @@ p <- ggplot(home_runs, aes(x = launch_speed, y = launch_angle, color = hit_dista
     panel.grid.minor = element_blank()
   )
 
-# Convert ggplot to interactive plotly widget with expanded height
-ggplotly(p, tooltip = "text", height = 650)
+# Convert ggplot to responsive plotly widget that fits the page
+ggplotly(p, tooltip = "text") |>
+  layout(autosize = TRUE) |>
+  config(responsive = TRUE, scrollZoom = FALSE)
 ```
 
 ::: {.callout-note appearance="simple" icon=false}

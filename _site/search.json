@@ -7,6 +7,20 @@
     "text": "Two baseballs do not have to have the same exit velocity and launch angle to both be home runs. Exit velocity measures how fast the ball leaves the bat, while launch angle measures the vertical angle at which the ball is hit. These two factors work together, but there is not one specific combination that guarantees a home run. For example, one ball might leave the bat at 105 mph with a 25-degree launch angle, while another might leave at 95 mph with a 30-degree launch angle. Depending on other factors, such as where the ball is hit and the conditions of the stadium, both could still result in home runs.\nThis is important because every batted ball follows a different trajectory, and baseball stadiums have different field dimensions. A ball hit at a certain exit velocity and launch angle might travel over the fence in one ballpark but stay in play in another. Factors such as wind, temperature, altitude, and the distance to the outfield wall can also affect the result. Because of this, looking at exit velocity and launch angle together can help explain why some balls become home runs, but they cannot completely determine the outcome by themselves."
   },
   {
+    "objectID": "Story.html#distance-variation-in-the-sweet-spot",
+    "href": "Story.html#distance-variation-in-the-sweet-spot",
+    "title": "Why Exit Velocity and Launch Angle Don’t Tell the Whole Story",
+    "section": "Distance Variation in the “Sweet Spot”",
+    "text": "Distance Variation in the “Sweet Spot”\nEven when two balls are hit squarely into the ideal home run zone—between 100–105 mph exit velocity and 25°–30° launch angle—environmental conditions, ballpark dimensions, and spray direction cause actual travel distances to vary dramatically:"
+  },
+  {
+    "objectID": "Story.html#the-hidden-factors-behind-every-home-run",
+    "href": "Story.html#the-hidden-factors-behind-every-home-run",
+    "title": "Why Exit Velocity and Launch Angle Don’t Tell the Whole Story",
+    "section": "The Hidden Factors Behind Every Home Run",
+    "text": "The Hidden Factors Behind Every Home Run\nWhy do balls struck with identical exit speed and angle land anywhere from 330 to 450+ feet? Three major factors explain the gap:\n\n\n\n\n\n\nTip1. Asymmetrical Ballparks\n\n\n\nUnlike football fields or basketball courts, no two MLB outfields are identical. A 315-foot fly ball down the line can be a home run in Boston or New York, but a 410-foot drive to dead center in Detroit or Colorado is often an easy out.\n\n\n\n\n\n\n\n\nTip2. Spray Angle & Field Direction\n\n\n\nDown the foul lines, outfield fences are typically 310–335 feet from home plate. To straightaway center field, fences sit 400–415 feet away. A ball pulled down the line requires far less distance to clear the wall than one driven to center.\n\n\n\n\n\n\n\n\nTip3. Atmosphere & Weather\n\n\n\nAir density directly influences aerodynamic drag. Warm air, low humidity, and high altitude (like Denver’s Coors Field, 5,200 feet above sea level) allow batted balls to carry several feet further than in cold, heavy sea-level air."
+  },
+  {
     "objectID": "simulator.html",
     "href": "simulator.html",
     "title": "Simulator",
@@ -33,19 +47,5 @@
     "title": "Elements of a Home Run",
     "section": "",
     "text": "What does it take to hit a home run in Major League Baseball? Using Statcast tracking data from the 2025 season, this interactive visualization examines how exit velocity and launch angle combine to send the ball over the fence.\n\nHitting a home run requires a precise combination of swing mechanics and launch characteristics. Mechanically, a hitter generates explosive rotational power from the lower body through the hips and torso, delivering high bat speed along a slightly upward swing plane to make square contact on the lower half of the baseball. This collision creates the signature characteristics of a home run: an exit velocity typically topping 100 mph, a launch angle elevated into the 25°–35° window, and backspin that generates aerodynamic lift to carry the ball beyond outfield fences 380+ feet away.\n\n\n\n\n\n\n\n\n\n\n\n\nNoteKey Insights from the Data\n\n\n\n\nExit Velocity (x-axis): The speed at which the ball leaves the bat in miles per hour. Most home runs require at least 95 mph, with the median hovering around 105 mph.\nLaunch Angle (y-axis): The vertical angle of the hit in degrees. The optimal trajectory for a home run falls between 25° and 35°.\nHit Distance (Color): Lighter yellow and orange tones represent tape-measure blasts (400+ ft), while darker purple points mark shorter hits that just cleared the fence.\nThe “Sweet Spot”: Notice how the density of dots clusters heavily between 100–110 mph and 25°–35°. This combination produces the highest likelihood of a home run in Major League Baseball."
-  },
-  {
-    "objectID": "Story.html#distance-variation-in-the-sweet-spot",
-    "href": "Story.html#distance-variation-in-the-sweet-spot",
-    "title": "Why Exit Velocity and Launch Angle Don’t Tell the Whole Story",
-    "section": "Distance Variation in the “Sweet Spot”",
-    "text": "Distance Variation in the “Sweet Spot”\nEven when two balls are hit squarely into the ideal home run zone—between 100–105 mph exit velocity and 25°–30° launch angle—environmental conditions, ballpark dimensions, and spray direction cause actual travel distances to vary dramatically:"
-  },
-  {
-    "objectID": "Story.html#the-hidden-factors-behind-every-home-run",
-    "href": "Story.html#the-hidden-factors-behind-every-home-run",
-    "title": "Why Exit Velocity and Launch Angle Don’t Tell the Whole Story",
-    "section": "The Hidden Factors Behind Every Home Run",
-    "text": "The Hidden Factors Behind Every Home Run\nWhy do balls struck with identical exit speed and angle land anywhere from 330 to 450+ feet? Three major factors explain the gap:\n\n\n\n\n\n\nTip1. Asymmetrical Ballparks\n\n\n\nUnlike football fields or basketball courts, no two MLB outfields are identical. A 315-foot fly ball down the line can be a home run in Boston or New York, but a 410-foot drive to dead center in Detroit or Colorado is often an easy out.\n\n\n\n\n\n\n\n\nTip2. Spray Angle & Field Direction\n\n\n\nDown the foul lines, outfield fences are typically 310–335 feet from home plate. To straightaway center field, fences sit 400–415 feet away. A ball pulled down the line requires far less distance to clear the wall than one driven to center.\n\n\n\n\n\n\n\n\nTip3. Atmosphere & Weather\n\n\n\nAir density directly influences aerodynamic drag. Warm air, low humidity, and high altitude (like Denver’s Coors Field, 5,200 feet above sea level) allow batted balls to carry several feet further than in cold, heavy sea-level air."
   }
 ]

@@ -38,22 +38,44 @@ sweet_spot <- read_csv("data/home_runs_2025.csv", show_col_types = FALSE) |>
     !is.na(hit_distance_sc)
   )
 
-# Plot distribution of actual distances for these identically hit balls
+med_dist <- median(sweet_spot$hit_distance_sc)
+
+# Plot distribution of actual distances with warm sunset aesthetic
 ggplot(sweet_spot, aes(x = hit_distance_sc)) +
-  geom_histogram(binwidth = 5, fill = "#2c3e50", color = "white", alpha = 0.85) +
-  geom_vline(aes(xintercept = median(hit_distance_sc)), color = "#e74c3c", linetype = "dashed", linewidth = 1) +
+  geom_histogram(
+    aes(fill = after_stat(count)),
+    binwidth = 5,
+    color = "white",
+    linewidth = 0.6,
+    show.legend = FALSE
+  ) +
+  scale_fill_gradient(low = "#ffb199", high = "#ff6a88") +
+  geom_vline(xintercept = med_dist, color = "#ff4757", linetype = "dashed", linewidth = 0.9) +
+  annotate(
+    "label",
+    x = med_dist,
+    y = 125,
+    label = paste0("Median: ", round(med_dist), " ft"),
+    color = "#c0392b",
+    fill = "#fff0f3",
+    size = 3.6,
+    fontface = "bold",
+    label.r = unit(0.3, "lines")
+  ) +
   scale_x_continuous(breaks = seq(320, 460, by = 20)) +
   labs(
     title = "Distance Spread for Identically Hit Home Runs (2025)",
-    subtitle = "All balls struck between 100–105 mph EV and 25°–30° LA (median: 398 ft)",
+    subtitle = "Balls hit 100–105 mph EV and 25°–30° LA vary by over 120 feet!",
     x = "Actual Distance (feet)",
     y = "Number of Home Runs",
     caption = "Source: MLB Statcast 2025"
   ) +
   theme_minimal(base_size = 12) +
   theme(
-    plot.title = element_text(face = "bold"),
-    panel.grid.minor = element_blank()
+    plot.title = element_text(face = "bold", color = "#2d3436"),
+    plot.subtitle = element_text(color = "#636e72"),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank()
   )
 ```
 
