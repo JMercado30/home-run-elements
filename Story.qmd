@@ -1,8 +1,77 @@
 ---
 title: "Why Exit Velocity and Launch Angle Don’t Tell the Whole Story"
 format: html
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
 
 Two baseballs do not have to have the same exit velocity and launch angle to both be home runs. Exit velocity measures how fast the ball leaves the bat, while launch angle measures the vertical angle at which the ball is hit. These two factors work together, but there is not one specific combination that guarantees a home run. For example, one ball might leave the bat at 105 mph with a 25-degree launch angle, while another might leave at 95 mph with a 30-degree launch angle. Depending on other factors, such as where the ball is hit and the conditions of the stadium, both could still result in home runs.
 
+::: {.callout-note appearance="simple"}
+### Real-World Example: Same Launch Angle, Very Different Outcomes (2025)
+
+- **Alex Bregman (Fenway Park):** Hit a **316-foot** home run with an exit velocity of **91.2 mph** and a **31°** launch angle — just sneaking past Fenway's famous Pesky Pole in right field.
+- **Nick Kurtz (Sutter Health Park):** Smashed a **493-foot** blast at **115.0 mph** with almost the exact same launch angle (**30°**).
+
+Both balls had optimal launch angles (~30°–31°), yet their distances differed by nearly 180 feet because of exit velocity and ballpark dimensions.
+:::
+
 This is important because every batted ball follows a different trajectory, and baseball stadiums have different field dimensions. A ball hit at a certain exit velocity and launch angle might travel over the fence in one ballpark but stay in play in another. Factors such as wind, temperature, altitude, and the distance to the outfield wall can also affect the result. Because of this, looking at exit velocity and launch angle together can help explain why some balls become home runs, but they cannot completely determine the outcome by themselves.
+
+## Distance Variation in the "Sweet Spot"
+
+Even when two balls are hit squarely into the ideal home run zone—between **100–105 mph exit velocity** and **25°–30° launch angle**—environmental conditions, ballpark dimensions, and spray direction cause actual travel distances to vary dramatically:
+
+```{r}
+#| fig-width: 8
+#| fig-height: 4.5
+
+library(tidyverse)
+
+# Filter for home runs hit within the standard "sweet spot"
+sweet_spot <- read_csv("data/home_runs_2025.csv", show_col_types = FALSE) |>
+  filter(
+    launch_speed >= 100, launch_speed <= 105,
+    launch_angle >= 25, launch_angle <= 30,
+    !is.na(hit_distance_sc)
+  )
+
+# Plot distribution of actual distances for these identically hit balls
+ggplot(sweet_spot, aes(x = hit_distance_sc)) +
+  geom_histogram(binwidth = 5, fill = "#2c3e50", color = "white", alpha = 0.85) +
+  geom_vline(aes(xintercept = median(hit_distance_sc)), color = "#e74c3c", linetype = "dashed", linewidth = 1) +
+  scale_x_continuous(breaks = seq(320, 460, by = 20)) +
+  labs(
+    title = "Distance Spread for Identically Hit Home Runs (2025)",
+    subtitle = "All balls struck between 100–105 mph EV and 25°–30° LA (median: 398 ft)",
+    x = "Actual Distance (feet)",
+    y = "Number of Home Runs",
+    caption = "Source: MLB Statcast 2025"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank()
+  )
+```
+
+## The Hidden Factors Behind Every Home Run
+
+Why do balls struck with identical exit speed and angle land anywhere from 330 to 450+ feet? Three major factors explain the gap:
+
+::: {.callout-tip appearance="simple"}
+### 1. Asymmetrical Ballparks
+Unlike football fields or basketball courts, no two MLB outfields are identical. A 315-foot fly ball down the line can be a home run in Boston or New York, but a 410-foot drive to dead center in Detroit or Colorado is often an easy out.
+:::
+
+::: {.callout-tip appearance="simple"}
+### 2. Spray Angle & Field Direction
+Down the foul lines, outfield fences are typically 310–335 feet from home plate. To straightaway center field, fences sit 400–415 feet away. A ball pulled down the line requires far less distance to clear the wall than one driven to center.
+:::
+
+::: {.callout-tip appearance="simple"}
+### 3. Atmosphere & Weather
+Air density directly influences aerodynamic drag. Warm air, low humidity, and high altitude (like Denver's Coors Field, 5,200 feet above sea level) allow batted balls to carry several feet further than in cold, heavy sea-level air.
+:::
