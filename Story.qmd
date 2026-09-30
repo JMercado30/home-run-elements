@@ -18,8 +18,6 @@ Two baseballs do not have to have the same exit velocity and launch angle to bot
 Both balls had optimal launch angles (~30°–31°), yet their distances differed by nearly 180 feet because of exit velocity and ballpark dimensions.
 :::
 
-This is important because every batted ball follows a different trajectory, and baseball stadiums have different field dimensions. A ball hit at a certain exit velocity and launch angle might travel over the fence in one ballpark but stay in play in another. Factors such as wind, temperature, altitude, and the distance to the outfield wall can also affect the result. Because of this, looking at exit velocity and launch angle together can help explain why some balls become home runs, but they cannot completely determine the outcome by themselves.
-
 ## Distance Variation in the "Sweet Spot"
 
 Even when two balls are hit squarely into the ideal home run zone—between **100–105 mph exit velocity** and **25°–30° launch angle**—environmental conditions, ballpark dimensions, and spray direction cause actual travel distances to vary dramatically:
@@ -88,12 +86,8 @@ Why do balls struck with identical exit speed and angle land anywhere from 330 t
 Unlike football fields or basketball courts, no two MLB outfields are identical. A 315-foot fly ball down the line can be a home run in Boston or New York, but a 410-foot drive to dead center in Detroit or Colorado is often an easy out.
 :::
 
-::: {.callout-tip appearance="simple"}
-### 2. Spray Angle & Field Direction
-Down the foul lines, outfield fences are typically 310–335 feet from home plate. To straightaway center field, fences sit 400–415 feet away. A ball pulled down the line requires far less distance to clear the wall than one driven to center.
-:::
 
 ::: {.callout-tip appearance="simple"}
-### 3. Atmosphere & Weather
+### 2. Atmosphere & Weather
 Air density directly influences aerodynamic drag. Warm air, low humidity, and high altitude (like Denver's Coors Field, 5,200 feet above sea level) allow batted balls to carry several feet further than in cold, heavy sea-level air.
 :::
