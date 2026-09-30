@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Park Effect: Which Ballparks Helped the Most? – Elements of a Home Run</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-568d3f57be93b4b7d27485e85cacee8d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.12.1/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Elements of a Home Run</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./simulator.html"> 
+<span class="menu-text">Home Run Simulator</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Story.html"> 
+<span class="menu-text">EV &amp; LA Don’t Tell It All</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./park_effect.html" aria-current="page"> 
+<span class="menu-text">Park Effect</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./park_story.html"> 
+<span class="menu-text">Why the Park Matters</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-this-plot-is-showing" id="toc-what-this-plot-is-showing" class="nav-link active" data-scroll-target="#what-this-plot-is-showing">What this plot is showing</a></li>
+  <li><a href="#the-most-hitter-friendly-ballparks" id="toc-the-most-hitter-friendly-ballparks" class="nav-link" data-scroll-target="#the-most-hitter-friendly-ballparks">The most hitter-friendly ballparks</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Park Effect: Which Ballparks Helped the Most?</h1>
+<p class="subtitle lead">Comparing home-run carry across MLB stadiums in 2025</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="lead">
+<p>The same swing does not travel the same way in every ballpark. A home run in one stadium can be a warning-track out in another, even when the exit velocity and launch angle look nearly identical.</p>
+</div>
+<p>This page uses Statcast home-run data to compare how much a ballpark seems to boost or suppress home-run carry. Instead of treating every home run as identical, we compare each stadium’s median home-run distance to the season-wide median and ask: which parks were most generous to hitters in 2025?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-8b11da429391d53c51ee" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-8b11da429391d53c51ee">{"x":{"data":[{"orientation":"v","width":378,"base":0.59999999999999998,"x":[189],"y":[0.79999999999999993],"text":"<b>Daikin Park<\/b><br>Median HR Distance: 378 ft<br>Park Adjustment: -19 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(44,127,184,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":384,"base":1.6000000000000001,"x":[192],"y":[0.79999999999999982],"text":"<b>Yankee Stadium<\/b><br>Median HR Distance: 384 ft<br>Park Adjustment: -13 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(122,163,204,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":385,"base":2.6000000000000001,"x":[192.5],"y":[0.79999999999999982],"text":"<b>Tropicana Field<\/b><br>Median HR Distance: 385 ft<br>Park Adjustment: -12 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(132,169,207,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":387.5,"base":3.6000000000000001,"x":[193.75],"y":[0.80000000000000027],"text":"<b>Citi Field<\/b><br>Median HR Distance: 388 ft<br>Park Adjustment: -10 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(157,185,216,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":389.5,"base":4.5999999999999996,"x":[194.75],"y":[0.80000000000000071],"text":"<b>Comerica Park<\/b><br>Median HR Distance: 390 ft<br>Park Adjustment: -8 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(176,198,222,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":390,"base":5.5999999999999996,"x":[195],"y":[0.80000000000000071],"text":"<b>Citizens Bank Park<\/b><br>Median HR Distance: 390 ft<br>Park Adjustment: -7 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(181,201,224,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":391.5,"base":6.5999999999999996,"x":[195.75],"y":[0.80000000000000071],"text":"<b>Rate Field<\/b><br>Median HR Distance: 392 ft<br>Park Adjustment: -6 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(195,211,229,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":392,"base":7.5999999999999996,"x":[196],"y":[0.80000000000000071],"text":"<b>Great American Ball Park<\/b><br>Median HR Distance: 392 ft<br>Park Adjustment: -5 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(200,214,231,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":392.5,"base":8.5999999999999996,"x":[196.25],"y":[0.80000000000000071],"text":"<b>T-Mobile Park<\/b><br>Median HR Distance: 392 ft<br>Park Adjustment: -4 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(205,217,232,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":393,"base":9.5999999999999996,"x":[196.5],"y":[0.80000000000000071],"text":"<b>Progressive Field<\/b><br>Median HR Distance: 393 ft<br>Park Adjustment: -4 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(210,220,234,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[395,395],"base":[11.6,10.6],"x":[197.5,197.5],"y":[0.80000000000000071,0.80000000000000071],"text":["<b>Wrigley Field<\/b><br>Median HR Distance: 395 ft<br>Park Adjustment: -2 ft","<b>Nationals Park<\/b><br>Median HR Distance: 395 ft<br>Park Adjustment: -2 ft"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(228,234,240,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[396,396,396],"base":[13.6,12.6,14.6],"x":[198,198,198],"y":[0.80000000000000071,0.80000000000000071,0.80000000000000071],"text":["<b>Oriole Park at Camden Yards<\/b><br>Median HR Distance: 396 ft<br>Park Adjustment: -1 ft","<b>American Family Field<\/b><br>Median HR Distance: 396 ft<br>Park Adjustment: -1 ft","<b>Target Field<\/b><br>Median HR Distance: 396 ft<br>Park Adjustment: -1 ft"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(238,240,244,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":397,"base":15.6,"x":[198.5],"y":[0.79999999999999893],"text":"<b>Fenway Park<\/b><br>Median HR Distance: 397 ft<br>Park Adjustment: +0 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(247,247,247,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[398,398,398],"base":[17.600000000000001,16.600000000000001,18.600000000000001],"x":[199,199,199],"y":[0.79999999999999716,0.79999999999999716,0.79999999999999716],"text":["<b>Petco Park<\/b><br>Median HR Distance: 398 ft<br>Park Adjustment: +1 ft","<b>Oracle Park<\/b><br>Median HR Distance: 398 ft<br>Park Adjustment: +1 ft","<b>Rogers Centre<\/b><br>Median HR Distance: 398 ft<br>Park Adjustment: +1 ft"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(247,239,237,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[399,399],"base":[19.600000000000001,20.600000000000001],"x":[199.5,199.5],"y":[0.79999999999999716,0.79999999999999716],"text":["<b>Busch Stadium<\/b><br>Median HR Distance: 399 ft<br>Park Adjustment: +2 ft","<b>Globe Life Field<\/b><br>Median HR Distance: 399 ft<br>Park Adjustment: +2 ft"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(247,231,228,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":400,"base":21.600000000000001,"x":[200],"y":[0.79999999999999716],"text":"<b>UNIQLO Field at Dodger Stadium<\/b><br>Median HR Distance: 400 ft<br>Park Adjustment: +3 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(247,223,218,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":401,"base":22.600000000000001,"x":[200.5],"y":[0.79999999999999716],"text":"<b>PNC Park<\/b><br>Median HR Distance: 401 ft<br>Park Adjustment: +4 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(247,215,208,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":401.5,"base":23.600000000000001,"x":[200.75],"y":[0.79999999999999716],"text":"<b>loanDepot park<\/b><br>Median HR Distance: 402 ft<br>Park Adjustment: +4 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(246,211,204,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":402,"base":24.600000000000001,"x":[201],"y":[0.79999999999999716],"text":"<b>Angel Stadium<\/b><br>Median HR Distance: 402 ft<br>Park Adjustment: +5 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(246,207,199,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":404.5,"base":25.600000000000001,"x":[202.25],"y":[0.79999999999999716],"text":"<b>Sutter Health Park<\/b><br>Median HR Distance: 404 ft<br>Park Adjustment: +8 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(243,188,176,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":406,"base":26.600000000000001,"x":[203],"y":[0.79999999999999716],"text":"<b>Chase Field<\/b><br>Median HR Distance: 406 ft<br>Park Adjustment: +9 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(241,176,162,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":407.5,"base":27.600000000000001,"x":[203.75],"y":[0.79999999999999716],"text":"<b>Truist Park<\/b><br>Median HR Distance: 408 ft<br>Park Adjustment: +10 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(239,164,148,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":411,"base":28.600000000000001,"x":[205.5],"y":[0.79999999999999716],"text":"<b>Kauffman Stadium<\/b><br>Median HR Distance: 411 ft<br>Park Adjustment: +14 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(231,136,117,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":416,"base":29.600000000000001,"x":[208],"y":[0.79999999999999716],"text":"<b>Coors Field<\/b><br>Median HR Distance: 416 ft<br>Park Adjustment: +19 ft","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(217,95,75,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0],"y":[1],"name":"31326b7727c55333388c8ffff955a6e5","type":"scatter","mode":"markers","opacity":0,"hoverinfo":"skip","showlegend":false,"marker":{"color":[0,1],"colorscale":[[0,"#2C7FB8"],[0.0033444816053512035,"#2F80B8"],[0.0066889632107023133,"#3180B9"],[0.010033444816053517,"#3381B9"],[0.01337792642140472,"#3582BA"],[0.016722408026755831,"#3883BA"],[0.020066889632107034,"#3A83BB"],[0.023411371237458237,"#3C84BB"],[0.026755852842809347,"#3E85BB"],[0.03010033444816055,"#4086BC"],[0.033444816053511663,"#4286BC"],[0.036789297658862866,"#4387BD"],[0.040133779264214069,"#4588BD"],[0.043478260869565175,"#4789BE"],[0.046822742474916378,"#4989BE"],[0.050167224080267581,"#4A8ABE"],[0.053511705685618693,"#4C8BBF"],[0.056856187290969896,"#4E8CBF"],[0.0602006688963211,"#508DC0"],[0.063545150501672212,"#518DC0"],[0.066889632107023408,"#538EC0"],[0.070234113712374618,"#548FC1"],[0.073578595317725731,"#5690C1"],[0.076923076923076927,"#5790C2"],[0.080267558528428082,"#5991C2"],[0.08361204013377925,"#5B92C3"],[0.086956521739130446,"#5C93C3"],[0.090301003344481601,"#5E93C3"],[0.093645484949832755,"#5F94C4"],[0.096989966555183965,"#6195C4"],[0.10033444816053512,"#6296C5"],[0.10367892976588627,"#6396C5"],[0.10702341137123748,"#6597C6"],[0.11036789297658864,"#6698C6"],[0.11371237458193979,"#6899C6"],[0.117056856187291,"#699AC7"],[0.1204013377926421,"#6B9AC7"],[0.12374581939799331,"#6C9BC8"],[0.12709030100334451,"#6D9CC8"],[0.13043478260869562,"#6F9DC9"],[0.13377926421404682,"#709DC9"],[0.13712374581939799,"#729EC9"],[0.14046822742474915,"#739FCA"],[0.14381270903010035,"#74A0CA"],[0.14715719063545149,"#76A1CB"],[0.15050167224080266,"#77A1CB"],[0.15384615384615385,"#78A2CB"],[0.15719063545150502,"#7AA3CC"],[0.16053511705685616,"#7BA4CC"],[0.16387959866220739,"#7CA4CD"],[0.16722408026755853,"#7EA5CD"],[0.1705685618729097,"#7FA6CE"],[0.17391304347826089,"#80A7CE"],[0.17725752508361201,"#82A8CE"],[0.1806020066889632,"#83A8CF"],[0.1839464882943144,"#84A9CF"],[0.18729096989966551,"#85AAD0"],[0.19063545150501673,"#87ABD0"],[0.19397993311036787,"#88ACD1"],[0.19732441471571904,"#89ACD1"],[0.20066889632107024,"#8BADD1"],[0.20401337792642141,"#8CAED2"],[0.20735785953177255,"#8DAFD2"],[0.21070234113712374,"#8EB0D3"],[0.21404682274247491,"#90B0D3"],[0.21739130434782608,"#91B1D4"],[0.22073578595317728,"#92B2D4"],[0.22408026755852842,"#93B3D4"],[0.22742474916387959,"#95B4D5"],[0.23076923076923075,"#96B4D5"],[0.23411371237458195,"#97B5D6"],[0.23745819397993309,"#98B6D6"],[0.24080267558528426,"#9AB7D6"],[0.24414715719063546,"#9BB8D7"],[0.24749163879598662,"#9CB8D7"],[0.25083612040133779,"#9DB9D8"],[0.25418060200668896,"#9FBAD8"],[0.25752508361204013,"#A0BBD9"],[0.2608695652173913,"#A1BCD9"],[0.26421404682274247,"#A2BCD9"],[0.26755852842809363,"#A4BDDA"],[0.2709030100334448,"#A5BEDA"],[0.27424749163879597,"#A6BFDB"],[0.27759197324414719,"#A7C0DB"],[0.28093645484949831,"#A9C0DC"],[0.28428093645484948,"#AAC1DC"],[0.2876254180602007,"#ABC2DC"],[0.29096989966555187,"#ACC3DD"],[0.29431438127090298,"#ADC4DD"],[0.29765886287625415,"#AFC4DE"],[0.30100334448160537,"#B0C5DE"],[0.30434782608695654,"#B1C6DE"],[0.30769230769230765,"#B2C7DF"],[0.31103678929765888,"#B3C8DF"],[0.31438127090301005,"#B5C9E0"],[0.31772575250836121,"#B6C9E0"],[0.32107023411371233,"#B7CAE1"],[0.32441471571906355,"#B8CBE1"],[0.32775919732441472,"#BACCE1"],[0.33110367892976589,"#BBCDE2"],[0.33444816053511706,"#BCCEE2"],[0.33779264214046822,"#BDCEE3"],[0.34113712374581939,"#BECFE3"],[0.34448160535117056,"#C0D0E4"],[0.34782608695652173,"#C1D1E4"],[0.3511705685618729,"#C2D2E4"],[0.35451505016722407,"#C3D2E5"],[0.35785953177257523,"#C4D3E5"],[0.3612040133779264,"#C6D4E6"],[0.36454849498327757,"#C7D5E6"],[0.3678929765886288,"#C8D6E6"],[0.37123745819397991,"#C9D7E7"],[0.37458193979933108,"#CAD7E7"],[0.3779264214046823,"#CCD8E8"],[0.38127090301003347,"#CDD9E8"],[0.38461538461538458,"#CEDAE9"],[0.38795986622073575,"#CFDBE9"],[0.39130434782608697,"#D0DCE9"],[0.39464882943143814,"#D2DCEA"],[0.39799331103678925,"#D3DDEA"],[0.40133779264214048,"#D4DEEB"],[0.40468227424749165,"#D5DFEB"],[0.40802675585284282,"#D6E0EB"],[0.41137123745819398,"#D7E1EC"],[0.41471571906354515,"#D9E1EC"],[0.41806020066889632,"#DAE2ED"],[0.42140468227424749,"#DBE3ED"],[0.4247491638795986,"#DCE4EE"],[0.42809364548494983,"#DDE5EE"],[0.43143812709030105,"#DFE6EE"],[0.43478260869565216,"#E0E6EF"],[0.43812709030100333,"#E1E7EF"],[0.44147157190635455,"#E2E8F0"],[0.44481605351170567,"#E3E9F0"],[0.44816053511705684,"#E5EAF1"],[0.45150501672240806,"#E6EBF1"],[0.45484949832775917,"#E7ECF1"],[0.4581939799331104,"#E8ECF2"],[0.46153846153846151,"#E9EDF2"],[0.46488294314381268,"#EBEEF3"],[0.4682274247491639,"#ECEFF3"],[0.47157190635451501,"#EDF0F3"],[0.47491638795986618,"#EEF1F4"],[0.47826086956521741,"#EFF1F4"],[0.48160535117056852,"#F0F2F5"],[0.48494983277591974,"#F2F3F5"],[0.48829431438127091,"#F3F4F6"],[0.49163879598662202,"#F4F5F6"],[0.49498327759197325,"#F5F6F6"],[0.49832775919732447,"#F6F7F7"],[0.50167224080267558,"#F7F6F6"],[0.50501672240802675,"#F7F5F5"],[0.50836120401337792,"#F7F4F4"],[0.51170568561872909,"#F7F3F3"],[0.51505016722408026,"#F7F2F1"],[0.51839464882943143,"#F7F1F0"],[0.52173913043478259,"#F7F0EF"],[0.52508361204013376,"#F7EFEE"],[0.52842809364548493,"#F7EEEC"],[0.5317725752508361,"#F7EDEB"],[0.53511705685618727,"#F7ECEA"],[0.53846153846153844,"#F7EBE9"],[0.5418060200668896,"#F7EAE8"],[0.54515050167224077,"#F7E9E6"],[0.54849498327759194,"#F7E8E5"],[0.55183946488294311,"#F7E7E4"],[0.55518394648829439,"#F7E6E3"],[0.55852842809364545,"#F7E5E1"],[0.56187290969899661,"#F7E4E0"],[0.56521739130434789,"#F7E3DF"],[0.56856187290969895,"#F7E2DE"],[0.57190635451505012,"#F7E1DD"],[0.5752508361204014,"#F7E0DB"],[0.57859531772575246,"#F7DFDA"],[0.58193979933110374,"#F7DED9"],[0.58528428093645479,"#F7DDD8"],[0.58862876254180596,"#F7DCD6"],[0.59197324414715724,"#F7DBD5"],[0.5953177257525083,"#F7DAD4"],[0.59866220735785947,"#F7D9D3"],[0.60200668896321075,"#F7D8D2"],[0.6053511705685618,"#F7D7D0"],[0.60869565217391308,"#F7D6CF"],[0.61204013377926425,"#F6D5CE"],[0.61538461538461531,"#F6D4CD"],[0.61872909698996659,"#F6D3CC"],[0.62207357859531776,"#F6D2CA"],[0.62541806020066881,"#F6D1C9"],[0.62876254180602009,"#F6D0C8"],[0.63210702341137126,"#F6CFC7"],[0.63545150501672243,"#F6CEC6"],[0.6387959866220736,"#F6CDC4"],[0.64214046822742465,"#F6CCC3"],[0.64548494983277593,"#F6CBC2"],[0.6488294314381271,"#F5CAC1"],[0.65217391304347816,"#F5C9C0"],[0.65551839464882944,"#F5C8BE"],[0.65886287625418061,"#F5C7BD"],[0.66220735785953178,"#F5C6BC"],[0.66555183946488294,"#F5C5BB"],[0.66889632107023411,"#F5C4BA"],[0.67224080267558528,"#F5C3B9"],[0.67558528428093645,"#F4C2B7"],[0.67892976588628762,"#F4C1B6"],[0.68227424749163879,"#F4C0B5"],[0.68561872909698995,"#F4BFB4"],[0.68896321070234112,"#F4BEB3"],[0.69230769230769229,"#F4BDB1"],[0.69565217391304346,"#F3BCB0"],[0.69899665551839474,"#F3BBAF"],[0.7023411371237458,"#F3BAAE"],[0.70568561872909696,"#F3B9AD"],[0.70903010033444813,"#F3B8AC"],[0.7123745819397993,"#F3B7AA"],[0.71571906354515047,"#F2B6A9"],[0.71906354515050164,"#F2B5A8"],[0.72240802675585281,"#F2B4A7"],[0.72575250836120409,"#F2B3A6"],[0.72909698996655514,"#F2B2A5"],[0.73244147157190631,"#F1B1A3"],[0.73578595317725759,"#F1B0A2"],[0.73913043478260865,"#F1AFA1"],[0.74247491638795982,"#F1AEA0"],[0.7458193979933111,"#F1AD9F"],[0.74916387959866215,"#F0AC9E"],[0.75250836120401343,"#F0AB9C"],[0.7558528428093646,"#F0AA9B"],[0.75919732441471566,"#F0A99A"],[0.76254180602006694,"#F0A899"],[0.76588628762541799,"#EFA798"],[0.76923076923076916,"#EFA697"],[0.77257525083612044,"#EFA596"],[0.7759197324414715,"#EFA494"],[0.77926421404682278,"#EEA393"],[0.78260869565217395,"#EEA292"],[0.785953177257525,"#EEA191"],[0.78929765886287628,"#EEA090"],[0.79264214046822745,"#ED9F8F"],[0.79598662207357851,"#ED9E8E"],[0.79933110367892979,"#ED9D8C"],[0.80267558528428096,"#ED9C8B"],[0.80602006688963213,"#EC9B8A"],[0.80936454849498329,"#EC9A89"],[0.81270903010033446,"#EC9988"],[0.81605351170568563,"#EC9887"],[0.8193979933110368,"#EB9786"],[0.82274247491638797,"#EB9685"],[0.82608695652173914,"#EB9583"],[0.8294314381270903,"#EB9482"],[0.83277591973244147,"#EA9381"],[0.83612040133779264,"#EA9280"],[0.83946488294314381,"#EA917F"],[0.84280936454849498,"#E9907E"],[0.84615384615384615,"#E98F7D"],[0.8494983277591972,"#E98E7C"],[0.85284280936454859,"#E98D7B"],[0.85618729096989965,"#E88C79"],[0.85953177257525082,"#E88B78"],[0.8628762541806021,"#E88A77"],[0.86622073578595316,"#E78976"],[0.86956521739130432,"#E78875"],[0.8729096989966556,"#E78774"],[0.87625418060200666,"#E68673"],[0.87959866220735783,"#E68572"],[0.88294314381270911,"#E68471"],[0.88628762541806017,"#E5836F"],[0.88963210702341133,"#E5826E"],[0.89297658862876261,"#E5816D"],[0.89632107023411367,"#E4806C"],[0.89966555183946484,"#E47F6B"],[0.90301003344481612,"#E47E6A"],[0.90635451505016729,"#E37D69"],[0.90969899665551834,"#E37C68"],[0.91304347826086962,"#E37B67"],[0.91638795986622079,"#E27A66"],[0.91973244147157185,"#E27865"],[0.92307692307692302,"#E27764"],[0.9264214046822743,"#E17662"],[0.92976588628762535,"#E17561"],[0.93311036789297652,"#E17460"],[0.9364548494983278,"#E0735F"],[0.93979933110367886,"#E0725E"],[0.94314381270903003,"#E0715D"],[0.94648829431438131,"#DF705C"],[0.94983277591973236,"#DF6F5B"],[0.95317725752508353,"#DE6E5A"],[0.95652173913043481,"#DE6D59"],[0.95986622073578598,"#DE6C58"],[0.96321070234113704,"#DD6B57"],[0.96655518394648832,"#DD6A56"],[0.96989966555183948,"#DD6955"],[0.97324414715719054,"#DC6853"],[0.97658862876254182,"#DC6752"],[0.97993311036789299,"#DB6651"],[0.98327759197324405,"#DB6450"],[0.98662207357859533,"#DB634F"],[0.98996655518394649,"#DA624E"],[0.99331103678929755,"#DA614D"],[0.99665551839464894,"#D9604C"],[1,"#D95F4B"]],"colorbar":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"thickness":23.039999999999996,"title":"Adjustment (ft)","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243},"tickmode":"array","ticktext":["-10","0","10"],"tickvals":[0.23771929824561402,0.49999999999999994,0.762280701754386],"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":12.7521793275218},"ticklen":2,"len":0.5}},"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":43.098381070983812,"r":7.9701120797011216,"b":40.647571606475722,"l":203.23785803237868},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243},"title":{"text":"<b> Which parks were most generous to hitters? <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":19.128268991282692},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-20.800000000000001,436.80000000000001],"tickmode":"array","ticktext":["0","100","200","300","400"],"tickvals":[0,100,200,300,400],"categoryorder":"array","categoryarray":["0","100","200","300","400"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.9850560398505608,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":12.7521793275218},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.72455564360919278,"zeroline":false,"anchor":"y","title":{"text":"Median home-run distance (feet)","font":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,30.600000000000001],"tickmode":"array","ticktext":["Daikin Park","Yankee Stadium","Tropicana Field","Citi Field","Comerica Park","Citizens Bank Park","Rate Field","Great American Ball Park","T-Mobile Park","Progressive Field","Nationals Park","Wrigley Field","American Family Field","Oriole Park at Camden Yards","Target Field","Fenway Park","Oracle Park","Petco Park","Rogers Centre","Busch Stadium","Globe Life Field","UNIQLO Field at Dodger Stadium","PNC Park","loanDepot park","Angel Stadium","Sutter Health Park","Chase Field","Truist Park","Kauffman Stadium","Coors Field"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],"categoryorder":"array","categoryarray":["Daikin Park","Yankee Stadium","Tropicana Field","Citi Field","Comerica Park","Citizens Bank Park","Rate Field","Great American Ball Park","T-Mobile Park","Progressive Field","Nationals Park","Wrigley Field","American Family Field","Oriole Park at Camden Yards","Target Field","Fenway Park","Oracle Park","Petco Park","Rogers Centre","Busch Stadium","Globe Life Field","UNIQLO Field at Dodger Stadium","PNC Park","loanDepot park","Angel Stadium","Sutter Health Park","Chase Field","Truist Park","Kauffman Stadium","Coors Field"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.9850560398505608,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":12.7521793275218},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":12.7521793275218},"title":{"text":"Adjustment (ft)","font":{"color":"rgba(0,0,0,1)","family":"","size":15.940224159402243}}},"hovermode":"closest","barmode":"relative","autosize":true},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"responsive":true,"scrollZoom":false},"source":"A","attrs":{"4e132df4b76f":{"x":{},"y":{},"fill":{},"text":{},"type":"bar"}},"cur_data":"4e132df4b76f","visdat":{"4e132df4b76f":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<section id="what-this-plot-is-showing" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-plot-is-showing">What this plot is showing</h2>
+<p>This chart compares each stadium’s median home-run distance against the overall 2025 median. Positive values indicate a park where home runs tended to carry farther than the league average; negative values suggest a tougher environment for hitters.</p>
+</section>
+<section id="the-most-hitter-friendly-ballparks" class="level2">
+<h2 class="anchored" data-anchor-id="the-most-hitter-friendly-ballparks">The most hitter-friendly ballparks</h2>
+<p>These are the stadiums where the median home run traveled furthest above the league norm.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Ballpark</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Home runs</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Median distance</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Adjustment vs league median</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Coors Field</td>
+<td style="text-align: right;">236</td>
+<td style="text-align: right;">416</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kauffman Stadium</td>
+<td style="text-align: right;">177</td>
+<td style="text-align: right;">411</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Truist Park</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">408</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chase Field</td>
+<td style="text-align: right;">211</td>
+<td style="text-align: right;">406</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sutter Health Park</td>
+<td style="text-align: right;">234</td>
+<td style="text-align: right;">404</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Angel Stadium</td>
+<td style="text-align: right;">231</td>
+<td style="text-align: right;">402</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">loanDepot park</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">402</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PNC Park</td>
+<td style="text-align: right;">135</td>
+<td style="text-align: right;">401</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Elements of a Home Run | MLB Statcast 2025 Data Analysis</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

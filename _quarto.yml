@@ -9,9 +9,13 @@ website:
       - href: index.qmd
         text: Home
       - href: simulator.qmd
-        text: Simulator
+        text: Home Run Simulator
       - href: Story.qmd
-        text: Story
+        text: EV & LA Don’t Tell It All
+      - href: park_effect.qmd
+        text: Park Effect
+      - href: park_story.qmd
+        text: Why the Park Matters
       - href: about.qmd
         text: About
   page-footer:

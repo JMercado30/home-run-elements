@@ -1,5 +1,5 @@
 ---
-title: "Elements of a Home Run"
+toc: false
 subtitle: "Analyzing launch profiles and the physics of home runs using 2025 MLB Statcast data"
 execute:
   echo: false

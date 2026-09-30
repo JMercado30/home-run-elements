@@ -1,7 +1,12 @@
 ---
-title: "About the Project"
-subtitle: "Understanding the physics, mechanics, and data behind modern home runs"
+title: "About Me"
 ---
+
+::: {.lead}
+My name is Javier Mercado, and I am a data-science student exploring how baseball can be understood through data, modeling, and visualization. You can find more of my work on [GitHub](https://github.com/JMercado30) and learn more about [New College of Florida](https://www.ncf.edu/).
+:::
+
+## About This Project
 
 ::: {.lead}
 This project explores the physics and mechanics behind Major League Baseball home runs using Statcast tracking data from the 2025 season.

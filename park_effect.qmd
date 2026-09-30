@@ -1,0 +1,104 @@
+---
+title: "Park Effect: Which Ballparks Helped the Most?"
+subtitle: "Comparing home-run carry across MLB stadiums in 2025"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+::: {.lead}
+The same swing does not travel the same way in every ballpark. A home run in one stadium can be a warning-track out in another, even when the exit velocity and launch angle look nearly identical.
+:::
+
+This page uses Statcast home-run data to compare how much a ballpark seems to boost or suppress home-run carry. Instead of treating every home run as identical, we compare each stadium’s median home-run distance to the season-wide median and ask: which parks were most generous to hitters in 2025?
+
+```{r}
+library(tidyverse)
+library(plotly)
+
+team_map <- c(
+  "AZ" = "Arizona Diamondbacks", "ATH" = "Athletics", "ATL" = "Atlanta Braves",
+  "BAL" = "Baltimore Orioles", "BOS" = "Boston Red Sox", "CHC" = "Chicago Cubs",
+  "CWS" = "Chicago White Sox", "CIN" = "Cincinnati Reds", "CLE" = "Cleveland Guardians",
+  "COL" = "Colorado Rockies", "DET" = "Detroit Tigers", "HOU" = "Houston Astros",
+  "KC" = "Kansas City Royals", "LAA" = "Los Angeles Angels", "LAD" = "Los Angeles Dodgers",
+  "MIA" = "Miami Marlins", "MIL" = "Milwaukee Brewers", "MIN" = "Minnesota Twins",
+  "NYM" = "New York Mets", "NYY" = "New York Yankees", "PHI" = "Philadelphia Phillies",
+  "PIT" = "Pittsburgh Pirates", "SD" = "San Diego Padres", "SF" = "San Francisco Giants",
+  "SEA" = "Seattle Mariners", "STL" = "St. Louis Cardinals", "TB" = "Tampa Bay Rays",
+  "TEX" = "Texas Rangers", "TOR" = "Toronto Blue Jays", "WSH" = "Washington Nationals"
+)
+
+home_runs <- read_csv("data/home_runs_2025.csv", show_col_types = FALSE)
+ballparks <- read_csv("data/ballpark_dimensions.csv", show_col_types = FALSE)
+league_median <- median(home_runs$hit_distance_sc, na.rm = TRUE)
+
+park_summary <- home_runs |>
+  filter(!is.na(hit_distance_sc)) |>
+  mutate(team = unname(team_map[home_team])) |>
+  filter(!is.na(team)) |>
+  group_by(team) |>
+  summarise(
+    home_runs = n(),
+    median_distance = median(hit_distance_sc),
+    adjustment = median_distance - league_median,
+    .groups = "drop"
+  ) |>
+  left_join(ballparks |> select(team, venue), by = "team") |>
+  arrange(median_distance)
+
+p <- ggplot(park_summary, aes(
+  x = median_distance,
+  y = reorder(venue, median_distance),
+  fill = adjustment,
+  text = paste0(
+    "<b>", venue, "</b><br>",
+    "Median HR Distance: ", round(median_distance), " ft<br>",
+    "Park Adjustment: ", if_else(adjustment >= 0, "+", ""), round(adjustment), " ft"
+  )
+)) +
+  geom_col(width = 0.8) +
+  scale_fill_gradient2(low = "#2c7fb8", mid = "#f7f7f7", high = "#d95f4b", midpoint = 0) +
+  labs(
+    title = "Which parks were most generous to hitters?",
+    x = "Median home-run distance (feet)",
+    y = NULL,
+    fill = "Adjustment (ft)"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.y = element_blank()
+  )
+
+p |>
+  ggplotly(tooltip = "text") |>
+  layout(autosize = TRUE) |>
+  config(responsive = TRUE, scrollZoom = FALSE)
+```
+
+## What this plot is showing
+
+This chart compares each stadium’s median home-run distance against the overall 2025 median. Positive values indicate a park where home runs tended to carry farther than the league average; negative values suggest a tougher environment for hitters.
+
+## The most hitter-friendly ballparks
+
+These are the stadiums where the median home run traveled furthest above the league norm.
+
+```{r}
+#| results: asis
+
+top_parks <- park_summary |>
+  arrange(desc(median_distance)) |>
+  slice_head(n = 8) |>
+  transmute(
+    Ballpark = venue,
+    `Home runs` = home_runs,
+    `Median distance` = round(median_distance),
+    `Adjustment vs league median` = round(adjustment)
+  )
+
+knitr::kable(top_parks, format = "html")
+```

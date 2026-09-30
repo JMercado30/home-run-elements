@@ -1,0 +1,69 @@
+---
+title: "Why the Park Matters"
+subtitle: "How stadium shape changes the meaning of a home run"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+A ball hit hard and high is not always a home run. The same launch profile can mean a no-doubter in one stadium and a routine fly ball in another. The shape of the park changes what a good swing actually looks like.
+
+## The hidden variable: the fence
+
+Most discussions of home runs focus on exit velocity and launch angle. Those are important, but they do not tell the whole story. A 104 mph ball with a 28-degree launch angle may be a home run in one ballpark and a deep warning-track out in another.
+
+That difference comes from the geometry of the stadium itself.
+
+- Some parks have short distances down the foul lines.
+- Some have deep center fields.
+- Some create stronger carry because of altitude, air density, or outfield angle.
+- Some are symmetrical; others are not.
+
+The result is that the same swing can mean different things depending on where the batter stands.
+
+## A real-world example
+
+Consider two very similar balls.
+
+One is a 103 mph line drive with a 30-degree launch angle. The other is a 101 mph fly ball with a 29-degree launch angle. Both are strong, quality contact events. Yet one might land in the seats at Yankee Stadium or Fenway Park, while the other could be a catchable out in a deeper park. The difference is not just power. It is also the angle of the hit, the direction of the spray, and how far the fence sits in that direction.
+
+This is why a home run should not be judged only by the launch data. It is also a product of the stadium architecture.
+
+## Why park shape matters so much
+
+The fence is not a perfect circle. It bends and curves in different directions, and the distance from home plate changes all over the field.
+
+A right-handed hitter whose ball is pulled to the left field line may be rewarded by shorter fence distance in one stadium but punished by a large dead-ball area in another. A ball hit to straightaway center may clear the fence in a park with 410-foot center field but die at the warning track in a park with 390-foot center field.
+
+This means that the same launch profile can produce different outcomes simply because the path of the ball intersects a different part of the fence.
+
+## The bigger idea: park-adjusted baseball
+
+This is why park effect is such a useful concept in baseball analysis. A ballpark is not a neutral backdrop. It changes the interpretation of a hit.
+
+When we compare raw home-run distances, we are comparing outcomes that may have been shaped by different environments. If a hitter produces a certain type of contact in a hitter-friendly park, the raw data may exaggerate how strong that contact really was. In a tougher park, the same contact may look less impressive even if the swing itself was excellent.
+
+That is why ballpark-adjusted analysis is so important:
+
+- It gives a clearer picture of true power.
+- It helps compare hitters across teams and parks.
+- It shows that a home run is not just a function of the swing but also of the stadium that surrounds it.
+
+## The takeaway
+
+Every home run is a combination of three things:
+
+- The hitter’s contact quality.
+- The ball’s flight path.
+- The stadium it is flying in.
+
+The best baseball analysis does not act like these are separate stories. It recognizes that the stadium is part of the outcome.
+
+That is the key lesson from this project: a great swing is real, but the park can make that swing look even better or much worse than it otherwise would be.
+
+::: {.callout-tip appearance="simple" icon=false}
+### Final idea
+
+A home run is not just a number on a Statcast sheet. It is a physical event shaped by the batter, the pitch, the ball, and the park itself.
+:::
