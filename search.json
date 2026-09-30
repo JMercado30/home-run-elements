@@ -39,21 +39,21 @@
     "href": "park_effect.html#the-most-hitter-friendly-ballparks",
     "title": "Park Effect: Which Ballparks Helped the Most?",
     "section": "The most hitter-friendly ballparks",
-    "text": "The most hitter-friendly ballparks\nThese are the stadiums where the median home run traveled furthest above the league norm.\n\n\n\n\n\n\n\n\n\n\n\nBallpark\nHome runs\nMedian distance\nAdjustment vs league median\n\n\n\n\nCoors Field\n236\n416\n19\n\n\nKauffman Stadium\n177\n411\n14\n\n\nTruist Park\n198\n408\n10\n\n\nChase Field\n211\n406\n9\n\n\nSutter Health Park\n234\n404\n8\n\n\nAngel Stadium\n231\n402\n5\n\n\nloanDepot park\n186\n402\n4\n\n\nPNC Park\n135\n401\n4"
+    "text": "The most hitter-friendly ballparks\nThese are the stadiums where the median home run traveled furthest above the league norm.\n\n\n\nBallpark\nHome runs\nMedian distance\nAdjustment vs league median\n\n\n\n\nCoors Field\n236\n416\n19\n\n\nKauffman Stadium\n177\n411\n14\n\n\nTruist Park\n198\n408\n10\n\n\nChase Field\n211\n406\n9\n\n\nSutter Health Park\n234\n404\n8\n\n\nAngel Stadium\n231\n402\n5\n\n\nloanDepot park\n186\n402\n4\n\n\nPNC Park\n135\n401\n4"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About Me",
     "section": "",
-    "text": "This project explores the physics and mechanics behind Major League Baseball home runs using Statcast tracking data from the 2025 season."
+    "text": "My name is Javier Mercado, and I am a data-science student exploring how baseball can be understood through data, modeling, and visualization. You can find more of my work on GitHub and learn more about New College of Florida."
   },
   {
     "objectID": "about.html#about-this-project",
     "href": "about.html#about-this-project",
     "title": "About Me",
-    "section": "",
-    "text": "This project explores the physics and mechanics behind Major League Baseball home runs using Statcast tracking data from the 2025 season."
+    "section": "About This Project",
+    "text": "About This Project\n\nThis project explores the physics and mechanics behind Major League Baseball home runs using Statcast tracking data from the 2025 season."
   },
   {
     "objectID": "about.html#what-makes-a-home-run-go-out-of-the-park",
@@ -81,28 +81,28 @@
     "href": "park_story.html#a-real-world-example",
     "title": "Why the Park Matters",
     "section": "A real-world example",
-    "text": "A real-world example\nConsider two very similar balls.\n\nOne is a 103 mph line drive with a 30-degree launch angle.\nThe other is a 101 mph fly ball with a 29-degree launch angle.\n\nBoth are strong, quality contact events. Yet one might land in the seats at Yankee Stadium or Fenway Park, while the other could be a catchable out in a deeper park. The difference is not just power. It is also the angle of the hit, the direction of the spray, and how far the fence sits in that direction.\nThis is why a home run should not be judged only by the launch data. It is also a product of the stadium architecture."
+    "text": "A real-world example\nConsider two very similar balls.\nOne is a 103 mph line drive with a 30-degree launch angle. The other is a 101 mph fly ball with a 29-degree launch angle. Both are strong, quality contact events. Yet one might land in the seats at Yankee Stadium or Fenway Park, while the other could be a catchable out in a deeper park. The difference is not just power. It is also the angle of the hit, the direction of the spray, and how far the fence sits in that direction.\nThis is why a home run should not be judged only by the launch data. It is also a product of the stadium architecture."
   },
   {
     "objectID": "park_story.html#why-park-shape-matters-so-much",
     "href": "park_story.html#why-park-shape-matters-so-much",
     "title": "Why the Park Matters",
     "section": "Why park shape matters so much",
-    "text": "Why park shape matters so much\nThe fence is not a perfect circle. It bends and curves in different directions, and the distance from home plate changes all over the field.\nA right-handed hitter whose ball is pulled to the left field line may be rewarded by shorter fence distance in one stadium but punished by a large dead-ball area in another. A ball hit to straightaway center may clear the fence in a park with 410-foot center field but die at the warning track in a park with 390-foot center field.\nThis means that the same lauch profile can produce different outcomes simply because the path of the ball intersects a different part of the fence."
+    "text": "Why park shape matters so much\nThe fence is not a perfect circle. It bends and curves in different directions, and the distance from home plate changes all over the field.\nA right-handed hitter whose ball is pulled to the left field line may be rewarded by shorter fence distance in one stadium but punished by a large dead-ball area in another. A ball hit to straightaway center may clear the fence in a park with 410-foot center field but die at the warning track in a park with 390-foot center field.\nThis means that the same launch profile can produce different outcomes simply because the path of the ball intersects a different part of the fence."
   },
   {
     "objectID": "park_story.html#the-bigger-idea-park-adjusted-baseball",
     "href": "park_story.html#the-bigger-idea-park-adjusted-baseball",
     "title": "Why the Park Matters",
     "section": "The bigger idea: park-adjusted baseball",
-    "text": "The bigger idea: park-adjusted baseball\nThis is why park effect is such a useful concept in baseball analysis. A ballpark is not a neutral backdrop. It changes the interpretation of a hit.\nWhen we compare raw home-run distances, we are comparing outcomes that may have been shaped by different environments. If a hitter produces a certain type of contact in a hitter-friendly park, the raw data may exaggerate how strong that contact really was. In a tougher park, the same contact may look less impressive even if the swing itself was excellent.\nThat is why ballpark-adjusted analysis is so important:\n\nit gives a clearer picture of true power,\nit helps compare hitters across teams and parks,\nand it shows that a home run is not just a function of the swing but also of the stadium that surrounds it."
+    "text": "The bigger idea: park-adjusted baseball\nThis is why park effect is such a useful concept in baseball analysis. A ballpark is not a neutral backdrop. It changes the interpretation of a hit.\nWhen we compare raw home-run distances, we are comparing outcomes that may have been shaped by different environments. If a hitter produces a certain type of contact in a hitter-friendly park, the raw data may exaggerate how strong that contact really was. In a tougher park, the same contact may look less impressive even if the swing itself was excellent.\nThat is why ballpark-adjusted analysis is so important:\n\nIt gives a clearer picture of true power.\nIt helps compare hitters across teams and parks.\nIt shows that a home run is not just a function of the swing but also of the stadium that surrounds it."
   },
   {
     "objectID": "park_story.html#the-takeaway",
     "href": "park_story.html#the-takeaway",
     "title": "Why the Park Matters",
     "section": "The takeaway",
-    "text": "The takeaway\nEvery home run is a combination of three things:\n\nthe hitter’s contact quality,\nthe ball’s flight path,\nthe stadium it is flying in.\n\nThe best baseball analysis does not act like these are separate stories. It recognizes that the stadium is part of the outcome.\nThat is the key lesson from this project: a great swing is real, but the park can make that swing look even better or much worse than it otherwise would be.\n\n\n\n\n\n\nTipFinal idea\n\n\n\nA home run is not just a number on a Statcast sheet. It is a physical event shaped by the batter, the pitch, the ball, and the park itself."
+    "text": "The takeaway\nEvery home run is a combination of three things:\n\nThe hitter’s contact quality.\nThe ball’s flight path.\nThe stadium it is flying in.\n\nThe best baseball analysis does not act like these are separate stories. It recognizes that the stadium is part of the outcome.\nThat is the key lesson from this project: a great swing is real, but the park can make that swing look even better or much worse than it otherwise would be.\n\n\n\n\n\n\nTipFinal idea\n\n\n\nA home run is not just a number on a Statcast sheet. It is a physical event shaped by the batter, the pitch, the ball, and the park itself."
   },
   {
     "objectID": "simulator.html",
